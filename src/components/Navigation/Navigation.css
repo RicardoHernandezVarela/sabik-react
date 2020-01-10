@@ -1,0 +1,14 @@
+a {
+    text-decoration: none;
+}
+
+.navegacion {
+    display: flex;
+    flex-flow: row;
+    list-style: none;
+    align-items: baseline;
+}
+
+.navegacion > li {
+    padding: 10px;
+}
