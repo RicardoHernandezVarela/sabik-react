@@ -1,53 +1,51 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-/* Importar key */
-import * as KEYS from '../../key/apikey';
+/* Import ArtistContext Consumer */
+import { Consumer } from '../../context/context';
 
-class Home extends Component {
-    constructor(props) {
-        super(props);
+const Home = () => {
+    return (
+        <Consumer>
+          { context => {
+            return (
+                <div>
+                    <SearchForm 
+                        value={context.search} 
+                        handleChange={context.actions.handleChange} 
+                        handleSubmit={context.actions.handleSubmit}
+                    />             
+                    {context.loading && <p>Loading...</p>}
+                    {context.artist && 
+                        <div>
+                            <img src={context.artist.image[1]['#text']} alt="Artist img"/>
+                            <p>{context.artist.bio.summary.replace(/<[^>]+>/g, '')}</p>
+                        </div>
+                    }
+                    {context.error && <p>{context.error.message}</p>}
+                </div>
+            );
+          }}
+        </Consumer>
+    );
+}
 
-        this.state = {
-            loading: true,
-            query: 'the+smiths',
-            artist: null,
-            error: null,
-        }
-    }
+const SearchForm = (props) => {
+    const noValido = props.value === '';
 
-    realizarBuqueda(query) {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <input 
+                name="search"
+                value={props.value}
+                type="text"
+                onChange={props.handleChange}
+                placeholder="Busca un artista"
+            />
 
-        fetch(`http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${query}&api_key=${KEYS.apikey}&format=json`)
-          .then(response => response.json())
-          .then(responseData => {
-              this.setState({
-                  artist:responseData.artist,
-                  loading: false,
-                });
-          })
-          .catch(error => {
-              this.setState({
-                  error: error,
-              });
-            console.log('Error fetching and parsing data', error);
-          });
-    }
+            <button disabled={noValido} type="submit">Buscar</button>
 
-    componentDidMount() {
-        this.realizarBuqueda(this.state.query);
-    }
-
-    render() {
-        const {artist, loading, error} = this.state;
-
-        return (
-            <div>             
-                {loading && <p>Loading...</p>}
-                {artist && <p>{artist.bio.summary}</p>}
-                {error && <p>{error.message}</p>}
-            </div>
-        );
-    }
+        </form>
+    );
 }
 
 export default Home;
