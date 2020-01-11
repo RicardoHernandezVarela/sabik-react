@@ -11,13 +11,22 @@ const Navigation = () => {
     return (
         <ul className="navegacion">
             <li>
-                <Link to={ROUTES.HOME}><h1>The smiths</h1></Link>
+                <Link to={ROUTES.HOME}>Discover</Link>
             </li>
             <li>
-                <Link to={ROUTES.MEMBERS}>Miembros</Link>
+                <Link to={ROUTES.BIO}>Bio</Link>
             </li>
             <li>
-                <Link to={ROUTES.DISCS}>Discografía</Link>
+                <Link to={ROUTES.TOP_ALBUMS}>Top Albums</Link>
+            </li>
+            <li>
+                <Link to={ROUTES.TOP_TRACKS}>Top tracks</Link>
+            </li>
+            <li>
+                <Link to={ROUTES.MUSIC_GENRES}>Music genres</Link>
+            </li>
+            <li>
+                <Link to={ROUTES.RELEATED_ARTISTS}>Releated Artists</Link>
             </li>
         </ul>
     );

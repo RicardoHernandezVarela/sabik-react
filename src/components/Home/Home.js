@@ -7,21 +7,24 @@ const Home = () => {
     return (
         <Consumer>
           { context => {
+            const { search, loading, artist, actions, error} = context;
             return (
                 <div>
                     <SearchForm 
-                        value={context.search} 
-                        handleChange={context.actions.handleChange} 
-                        handleSubmit={context.actions.handleSubmit}
+                        value={search} 
+                        handleChange={actions.handleChange} 
+                        handleSubmit={actions.handleSubmit}
                     />             
-                    {context.loading && <p>Loading...</p>}
-                    {context.artist && 
+                    {loading && <p>Loading...</p>}
+
+                    {artist && 
                         <div>
-                            <img src={context.artist.image[1]['#text']} alt="Artist img"/>
-                            <p>{context.artist.bio.summary.replace(/<[^>]+>/g, '')}</p>
+                            <img src={artist.image[1]['#text']} alt="Artist img"/>
+                            <p>{artist.bio.summary.replace(/<[^>]+>/g, '')}</p>
                         </div>
                     }
-                    {context.error && <p>{context.error.message}</p>}
+
+                    {error && <p>{error.message}</p>}
                 </div>
             );
           }}

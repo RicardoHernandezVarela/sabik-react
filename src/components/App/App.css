@@ -4,3 +4,7 @@
     display: block;
     margin: 0 auto;
 }
+
+ul > li {
+    list-style: none;
+}
