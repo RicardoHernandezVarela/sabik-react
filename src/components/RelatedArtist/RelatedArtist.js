@@ -26,15 +26,20 @@ const RelatedArtist = () => {
 
 const ArtistList = (props) => {
     const allArtist = props.artist.similar.artist;
-    return (
-        <ul>
-            {allArtist.map((artist, index) => {
-                return (
-                    <Artist key={index} artist={artist} handleRedirectArtist={props.handleRedirectArtist}/>
-                );
-            })}
-        </ul>
-    );
+    if (allArtist.length > 0) {
+        return (
+            <ul>
+                {allArtist.map((artist, index) => {
+                    return (
+                        <Artist key={index} artist={artist} handleRedirectArtist={props.handleRedirectArtist}/>
+                    );
+                })}
+            </ul>
+        );
+    } else {
+        return <p>There are no related artist.</p>
+    }
+
 }
 
 class ArtistBase extends Component {

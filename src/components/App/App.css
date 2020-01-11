@@ -3,8 +3,17 @@
     width: 70%;
     display: block;
     margin: 0 auto;
+    border-radius: 10px;
 }
 
 ul > li {
     list-style: none;
+}
+
+.artist-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    display: block;
+    margin: 10px auto;
 }

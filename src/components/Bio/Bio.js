@@ -7,12 +7,12 @@ const Bio = () => {
     return (
         <Consumer>
             {context => {
-                const {artist, error} = context;
+                const {artist, artistImg, error} = context;
                 return (
                     <div>
                         {artist && 
                             <div>
-                                <img src={artist.image[1]['#text']} alt="Artist img"/>
+                                <img className="artist-img" src={artistImg} alt="Artist img"/>
                                 <p>{artist.bio.content.replace(/<[^>]+>/g, '')}</p>
                             </div>
                         }

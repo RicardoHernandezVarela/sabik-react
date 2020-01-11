@@ -7,7 +7,7 @@ const Home = () => {
     return (
         <Consumer>
           { context => {
-            const { search, loading, artist, actions, error} = context;
+            const { search, loading, artist, artistImg, actions, error} = context;
             return (
                 <div>
                     <SearchForm 
@@ -19,7 +19,7 @@ const Home = () => {
 
                     {artist && 
                         <div>
-                            <img src={artist.image[1]['#text']} alt="Artist img"/>
+                            <img className="artist-img" src={artistImg} alt="Artist img"/>
                             <p>{artist.bio.summary.replace(/<[^>]+>/g, '')}</p>
                         </div>
                     }

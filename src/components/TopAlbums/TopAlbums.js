@@ -13,10 +13,8 @@ const TopAlbums = () => {
                 const { topalbums:albums } = context;
                 return (
                     <div>
-                        {albums && 
-                            <Albums albums={albums} />
-                        }
-                        {!albums &&
+                        {albums ? 
+                            <Albums albums={albums} />:
                             <p>There are no albums</p>
                         }
                     </div>
@@ -34,7 +32,7 @@ const Albums = (props) => {
                 if (album.image[1]['#text']) {
                     return (
                         <li key={index}>
-                            <img src={album.image[1]['#text']} alt={album.image[1]['#text']}/>
+                            <img src={album.image[1]['#text']} alt="Album cover"/>
                             <span>
                                 {album.name}
                             </span>

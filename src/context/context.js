@@ -13,6 +13,7 @@ export class Provider extends Component {
             loading: false,
             query: 'the+smiths',
             artist: null,
+            artistImg: null,
             topalbums: null,
             toptracks: null,
             error: null,
@@ -21,14 +22,22 @@ export class Provider extends Component {
     }
 
     handleAlbumsOrTracksFetch = (metodo, query, prop) => {
-        console.log(prop)
         fetch(`http://ws.audioscrobbler.com/2.0/?method=artist.${metodo}&artist=${query}&api_key=${KEYS.apikey}&format=json`)
           .then(response => response.json())
           .then(responseData => {
-              this.setState({
-                  [prop]: responseData[prop],
-                  error: null,
-                });
+              if (metodo === 'gettopalbums') {
+                this.setState({
+                    [prop]: responseData[prop],
+                    artistImg: responseData[prop].album[0].image[2]['#text'],
+                    error: null,
+                  });
+              } else {
+                this.setState({
+                    [prop]: responseData[prop],
+                    error: null,
+                  });
+              }
+
           })
           .catch(error => {
               this.setState({
@@ -57,22 +66,10 @@ export class Provider extends Component {
           });
     }
 
-    handleTopAlbums = (query, prop) => {
-        console.log(prop)
-        fetch(`http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${query}&api_key=${KEYS.apikey}&format=json`)
-          .then(response => response.json())
-          .then(responseData => {
-              this.setState({
-                  [prop]: responseData.topalbums,
-                  error: null,
-                });
-          })
-          .catch(error => {
-              this.setState({
-                  error: error,
-              });
-            console.log('Error fetching and parsing data', error);
-          });
+    refreshArtistData = (query) => {
+        this.handleArtistSearch(query);
+        this.handleAlbumsOrTracksFetch('gettopalbums', query, "topalbums");
+        this.handleAlbumsOrTracksFetch('gettoptracks', query, "toptracks");
     }
 
     handleChange = (event) => {
@@ -86,9 +83,7 @@ export class Provider extends Component {
     handleSubmit = (event) => {
         this.setState({loading:true, artist: null});
 
-        this.handleArtistSearch(this.state.query);
-        this.handleAlbumsOrTracksFetch('gettopalbums', this.state.query, "topalbums");
-        this.handleAlbumsOrTracksFetch('gettoptracks', this.state.query, "toptracks");
+        this.refreshArtistData(this.state.query);
 
         this.setState({search: ''});
         event.preventDefault();
@@ -102,35 +97,31 @@ export class Provider extends Component {
             artist: null,
             loading: true,
         }, () => {
-            this.handleArtistSearch(this.state.query);
-            this.handleAlbumsOrTracksFetch('gettopalbums', this.state.query, "topalbums");
-            this.handleAlbumsOrTracksFetch('gettoptracks', this.state.query, "toptracks");
+            this.refreshArtistData(this.state.query);
         });
         this.setState({search: ''});
     }
 
     componentDidMount() {
         this.setState({loading:true});
-        this.handleArtistSearch(this.state.query);
-        this.handleAlbumsOrTracksFetch('gettopalbums', 'the+smiths', "topalbums");
-        this.handleAlbumsOrTracksFetch('gettoptracks', 'the+smiths', "toptracks");
+        this.refreshArtistData(this.state.query);
     }
 
-  render(){
-      return (
-          <ArtistContext.Provider value={{
-              ...this.state,
-              actions: {
-                handleChange: this.handleChange,
-                handleSubmit: this.handleSubmit,
-                handleRedirectArtist: this.handleRedirectArtist,
-              }
-           }}>
-              { this.props.children }
-          </ArtistContext.Provider>            
+    render(){
+        return (
+            <ArtistContext.Provider value={{
+                ...this.state,
+                actions: {
+                    handleChange: this.handleChange,
+                    handleSubmit: this.handleSubmit,
+                    handleRedirectArtist: this.handleRedirectArtist,
+                }
+            }}>
+                { this.props.children }
+            </ArtistContext.Provider>            
 
-      )
-  }
+        )
+    }
 }
 
 
