@@ -1,7 +1,13 @@
 import React from 'react';
 
+/* Importar CSS */
+import './TopTracks.css';
+
 /* Import ArtistCOntext Consumer */
 import { Consumer } from '../../context/context';
+
+/* Imagen para los tracks */
+import Note from '../../img/note.png';
 
 const TopTracks = () => {
     return (
@@ -22,14 +28,27 @@ const TopTracks = () => {
 
 }
 
+const generateColor = () => {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+
+    return color;
+}
+
 const TracksList = (props) => {
     const tracks = props.tracks.track;
     return (
         <ul>
             {tracks.map((track, index) => {
+                const color = generateColor();
                 return (
                     <li key={index}>
-                        <strong>{track.name}</strong> 
+                        <img className="track-logo" style={{background: color}} src={Note} alt="Track cover"/>
+                        <span>{track.name}</span> 
                     </li>
                 );
             })}

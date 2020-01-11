@@ -22,7 +22,7 @@ export class Provider extends Component {
     }
 
     handleAlbumsOrTracksFetch = (metodo, query, prop) => {
-        fetch(`http://ws.audioscrobbler.com/2.0/?method=artist.${metodo}&artist=${query}&api_key=${KEYS.apikey}&format=json`)
+        fetch(`https://ws.audioscrobbler.com/2.0/?method=artist.${metodo}&artist=${query}&api_key=${KEYS.apikey}&format=json`)
           .then(response => response.json())
           .then(responseData => {
               if (metodo === 'gettopalbums') {
@@ -49,7 +49,7 @@ export class Provider extends Component {
 
     handleArtistSearch = (query = 'the+smiths') => {
 
-        fetch(`http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${query}&api_key=${KEYS.apikey}&format=json`)
+        fetch(`https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${query}&api_key=${KEYS.apikey}&format=json`)
           .then(response => response.json())
           .then(responseData => {
               this.setState({

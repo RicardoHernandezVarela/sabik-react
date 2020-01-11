@@ -7,6 +7,12 @@ import { Consumer } from '../../context/context';
 /* Import ROUTES */
 import * as ROUTES from '../../constants/routes';
 
+/* Import CSS */
+import './RelatedArtist.css'
+
+/* Imagen para los tracks */
+import Singing from '../../img/singing.png';
+
 const RelatedArtist = () => {
     return (
         <Consumer>
@@ -51,7 +57,8 @@ class ArtistBase extends Component {
     render() {
         return (
             <li onClick={this.handleClickArtist}>
-                {this.props.artist.name}
+                <img className="singer-logo" src={Singing} alt="Singer"/>
+                <span>{this.props.artist.name}</span>
             </li>
         );
     }

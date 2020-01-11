@@ -32,7 +32,7 @@ const Albums = (props) => {
                 if (album.image[1]['#text']) {
                     return (
                         <li key={index}>
-                            <img src={album.image[1]['#text']} alt="Album cover"/>
+                            <img className="album-logo" src={album.image[0]['#text']} alt="Album cover"/>
                             <span>
                                 {album.name}
                             </span>

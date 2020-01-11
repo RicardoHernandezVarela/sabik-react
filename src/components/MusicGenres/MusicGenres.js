@@ -3,6 +3,12 @@ import React from 'react';
 /* Importar ArtistContext Consumer */
 import { Consumer } from '../../context/context';
 
+/* Import CSS */
+import './MusicGenres.css'
+
+/* Imagen para los tracks */
+import Genres from '../../img/genres.png';
+
 const MusicGenres = () => {
     return (
         <Consumer>
@@ -27,7 +33,8 @@ const TagList = (props) => {
             {genres.map((genre, index) => {
                 return (
                     <li key={index}>
-                        <strong>{genre.name}</strong> 
+                        <img className="genres-logo" src={Genres} alt="Genres cover"/>
+                        <span>{genre.name}</span> 
                     </li>
                 );
             })}
