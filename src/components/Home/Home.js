@@ -1,5 +1,8 @@
 import React from 'react';
 
+/* Importar CSS */
+import './Home.css';
+
 /* Import ArtistContext Consumer */
 import { Consumer } from '../../context/context';
 
@@ -36,16 +39,18 @@ const SearchForm = (props) => {
     const noValido = props.value === '';
 
     return (
-        <form onSubmit={props.handleSubmit}>
-            <input 
+        <form className="buscar" onSubmit={props.handleSubmit}>
+            <input
                 name="search"
                 value={props.value}
                 type="text"
                 onChange={props.handleChange}
-                placeholder="Busca un artista"
+                placeholder="Search for an artist or band"
             />
 
-            <button disabled={noValido} type="submit">Buscar</button>
+            <button disabled={noValido} type="submit">
+                <i className="material-icons icon">search</i>
+            </button>
 
         </form>
     );

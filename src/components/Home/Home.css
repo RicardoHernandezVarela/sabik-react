@@ -1,0 +1,60 @@
+.buscar {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    position: relative;
+    
+}
+
+.buscar > input {
+    height: 20px;
+    width: 100%;
+    padding: 8px;
+    margin-top: 8px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    box-shadow: 0px 4px 3px 0px rgba(0,0,0,0.2);
+}
+
+.buscar > button {
+    outline:none;
+    border:none;
+    position:absolute;
+    right: -10px;
+    top: 11px;
+    height: 30px;
+    width: 30px;
+    border-radius:100%;
+    padding: 3px;
+    background-color: #80cbc4;
+}
+
+.buscar button:hover{
+    cursor:pointer;
+}
+
+/* Otros dispositivos */
+
+@media(min-width: 320px) {
+    .buscar {
+        width: 80%;
+    }
+
+    .buscar > input {
+        margin-left: -9px;
+    }
+
+    .buscar > button {
+        margin-right: 10px;
+    }
+
+}
+
+@media(min-width: 768px) {
+    .buscar {
+        width: 50%;
+    }
+}

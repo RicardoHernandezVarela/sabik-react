@@ -44,8 +44,10 @@ const ArtistName = () => {
                 const { artist } = context;
                 if (artist) {
                     return (
-                        <h5>{artist.name}</h5>
+                        <h5 className="artist-name">{artist.name}</h5>
                     );
+                } else {
+                    return <h5 className="artist-name">Searching...</h5>
                 }
             }}
         </Consumer>
