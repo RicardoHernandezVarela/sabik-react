@@ -33,7 +33,7 @@ ul > li {
 @media(min-width: 320px) {
     .artist-name {
         padding-top: 30px;
-        width: 30%;
+        width: 35%;
     }
 
     .artist-name > span {
@@ -43,7 +43,7 @@ ul > li {
 
 @media(min-width: 768px) {
     .artist-name {
-        padding-top: 40px;
+        padding-top: 45px;
         width: 20%;
     }
 }

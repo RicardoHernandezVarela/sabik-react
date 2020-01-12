@@ -6,6 +6,9 @@ import './Home.css';
 /* Import ArtistContext Consumer */
 import { Consumer } from '../../context/context';
 
+/* Importar componentes */
+import Loader from '../Loader/Loader';
+
 const Home = () => {
     return (
         <Consumer>
@@ -19,7 +22,7 @@ const Home = () => {
                         handleChange={actions.handleChange} 
                         handleSubmit={actions.handleSubmit}
                     />             
-                    {loading && <p>Loading...</p>}
+                    {loading && <Loader /> }
 
                     {artist && 
                         <div className="summary">

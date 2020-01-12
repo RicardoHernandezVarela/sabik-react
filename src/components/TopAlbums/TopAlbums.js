@@ -27,15 +27,15 @@ const TopAlbums = () => {
 const Albums = (props) => {
     const albums = props.albums.album;
     return (
-        <ul>
+        <ul className="albums">
             {albums.map((album, index) => {
                 if (album.image[1]['#text']) {
                     return (
                         <li key={index}>
-                            <img className="album-logo" src={album.image[0]['#text']} alt="Album cover"/>
-                            <span>
+                            <img src={album.image[2]['#text']} alt="Album cover"/>
+                            <div className="album-name">
                                 {album.name}
-                            </span>
+                            </div>
                         </li>
                     );
                 }
