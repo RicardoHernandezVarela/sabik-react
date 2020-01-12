@@ -33,7 +33,6 @@ class Bio extends Component {
                     let text = '';
 
                     if (artist) {
-                        let textLength = artist.bio.content.length;
 
                         if (fullText) {
                             text = artist.bio.content.replace(/<[^>]+>/g, '');

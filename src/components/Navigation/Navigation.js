@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 /* Importar CSS */
 import './Navigation.css';
@@ -13,7 +13,9 @@ class Navigation extends Component {
 
         this.state = {
             navClass: "nav-show",
-        }
+        };
+
+        this.actualPath = '/';
     }
 
     handleShowNavbar = () =>  {
@@ -21,6 +23,21 @@ class Navigation extends Component {
         navbarState === "nav-show" ?
             this.setState({navClass: "nav-hide"}):
             this.setState({navClass: "nav-show"});
+    }
+
+    componentDidUpdate() {
+        let newPath = this.props.history.location.pathname;
+        let actualPath = this.actualPath;
+    
+        if (actualPath !== newPath) {
+            //console.log('actual: ', actualPath, 'new: ', newPath);
+            if (window.outerWidth < 768) {
+                this.setState({navClass: "nav-hide"});
+                console.log(window.outerWidth);
+            }
+        }
+
+        this.actualPath = newPath;
     }
 
     render() {
@@ -57,4 +74,4 @@ class Navigation extends Component {
     }
 }
 
-export default Navigation;
+export default withRouter(Navigation);
