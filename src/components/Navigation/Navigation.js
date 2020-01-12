@@ -62,7 +62,7 @@ class Navigation extends Component {
                             <Link to={ROUTES.TOP_TRACKS}>Top tracks</Link>
                         </li>
                         <li>
-                            <Link to={ROUTES.MUSIC_GENRES}>Music genres</Link>
+                            <Link to={ROUTES.MUSIC_GENRES}>Musical genres</Link>
                         </li>
                         <li>
                             <Link to={ROUTES.RELEATED_ARTISTS}>Releated Artists</Link>

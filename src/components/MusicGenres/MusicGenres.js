@@ -7,7 +7,7 @@ import { Consumer } from '../../context/context';
 import './MusicGenres.css'
 
 /* Imagen para los tracks */
-import Genres from '../../img/genres.png';
+//import Genres from '../../img/genres.png';
 
 const MusicGenres = () => {
     return (
@@ -26,15 +26,28 @@ const MusicGenres = () => {
     )
 }
 
+const generarColor = () => {
+    const simbolos = '0123456789ABCDEF';
+    let color = '#';
+
+    for (var i = 0; i < 6; i++) {
+      color += simbolos[Math.floor(Math.random() * 16)];
+    }
+
+    return color;
+}
+
 const TagList = (props) => {
     const genres = props.artist.tags.tag;
     return (
-        <ul>
+        <ul className="genres">
             {genres.map((genre, index) => {
+                const color = generarColor();
                 return (
                     <li key={index}>
-                        <img className="genres-logo" src={Genres} alt="Genres cover"/>
-                        <span>{genre.name}</span> 
+                        <div className="genres-logo left" style={{background: color}}></div>
+                        <span>{genre.name.toUpperCase()}</span> 
+                        <div className="genres-logo right" style={{background: color}}></div>
                     </li>
                 );
             })}

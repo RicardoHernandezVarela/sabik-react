@@ -28,12 +28,12 @@ const TopTracks = () => {
 
 }
 
-const generateColor = () => {
-    const letters = '0123456789ABCDEF';
+const generarColor = () => {
+    const simbolos = '0123456789ABCDEF';
     let color = '#';
 
     for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
+      color += simbolos[Math.floor(Math.random() * 16)];
     }
 
     return color;
@@ -44,11 +44,13 @@ const TracksList = (props) => {
     return (
         <ul className="tracks">
             {tracks.map((track, index) => {
-                const color = generateColor();
+                const color = generarColor();
                 return (
                     <li key={index}>
                         <img className="track-logo" style={{background: color}} src={Note} alt="Track cover"/>
-                        <span>{track.name}</span> 
+                        <a href={track.url}>
+                            <span>{track.name}</span>
+                        </a>
                     </li>
                 );
             })}

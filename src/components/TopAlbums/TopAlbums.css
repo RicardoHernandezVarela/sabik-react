@@ -1,6 +1,7 @@
 .albums {
     width: 80%;
     margin: 10px auto;
+    margin-bottom: 30px;
     list-style: none;
     text-align: center;
     justify-content: center;
