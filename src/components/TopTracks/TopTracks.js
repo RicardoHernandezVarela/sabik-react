@@ -42,7 +42,7 @@ const generateColor = () => {
 const TracksList = (props) => {
     const tracks = props.tracks.track;
     return (
-        <ul>
+        <ul className="tracks">
             {tracks.map((track, index) => {
                 const color = generateColor();
                 return (
