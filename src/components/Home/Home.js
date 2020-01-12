@@ -11,6 +11,7 @@ const Home = () => {
         <Consumer>
           { context => {
             const { search, loading, artist, artistImg, actions, error} = context;
+            
             return (
                 <div>
                     <SearchForm 
@@ -21,9 +22,9 @@ const Home = () => {
                     {loading && <p>Loading...</p>}
 
                     {artist && 
-                        <div>
+                        <div className="summary">
                             <img className="artist-img" src={artistImg} alt="Artist img"/>
-                            <p>{artist.bio.summary.replace(/<[^>]+>/g, '')}</p>
+                            <p className="bio-summary">{(artist.bio.summary.replace(/<[^>]+>/g, ''))}</p>
                         </div>
                     }
 
@@ -45,7 +46,7 @@ const SearchForm = (props) => {
                 value={props.value}
                 type="text"
                 onChange={props.handleChange}
-                placeholder="Search for an artist or band"
+                placeholder="Search for a singer or band"
             />
 
             <button disabled={noValido} type="submit">

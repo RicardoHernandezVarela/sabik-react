@@ -17,7 +17,7 @@ a {
 .menu {
     display: none;
     color: #f5f5f5;
-    padding-top: 5px;
+    padding-top: 10px;
 }
 
 .navegacion {
@@ -61,7 +61,7 @@ a {
     }
 
     .navegacion > li {
-        padding: 3px;
+        padding: 5px;
         text-align: center;
         font-size: 0.8em;
     }
@@ -81,7 +81,7 @@ a {
     }
 
     .navegacion > li {
-        padding: 6px 10px 0 10px;
+        padding: 15px 10px 0 10px;
         text-align: center;
         font-size: 0.8em;
     }

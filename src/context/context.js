@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 /* Importar key */
 import * as KEYS from '../key/apikey';
 
+/* Importar fallback img */
+import Singer from '../img/singing.png';
+
 const ArtistContext = React.createContext();
 
 export class Provider extends Component {
@@ -28,7 +31,7 @@ export class Provider extends Component {
               if (metodo === 'gettopalbums') {
                 this.setState({
                     [prop]: responseData[prop],
-                    artistImg: responseData[prop].album[0].image[2]['#text'],
+                    artistImg: responseData[prop].album[0].image[2]['#text'] || Singer,
                     error: null,
                   });
               } else {
