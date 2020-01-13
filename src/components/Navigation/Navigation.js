@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 
 /* Importar CSS */
 import './Navigation.css';
@@ -16,6 +16,12 @@ class Navigation extends Component {
         };
 
         this.actualPath = '/';
+        this.activeStyle = {
+            fontWeight: "bold",
+            color: "#80deea",
+            fontSize: '1.1em',
+            textShadow: '3px 3px 3px #FF0000',
+        };
     }
 
     handleShowNavbar = () =>  {
@@ -48,22 +54,22 @@ class Navigation extends Component {
                 <div className={this.state.navClass}>
                     <ul className="navegacion">
                         <li>
-                            <Link to={ROUTES.HOME}>Discover</Link>
+                            <NavLink exact activeStyle={this.activeStyle} to={ROUTES.HOME}>Discover</NavLink>
                         </li>
                         <li>
-                            <Link to={ROUTES.BIO}>Bio</Link>
+                            <NavLink activeStyle={this.activeStyle} to={ROUTES.BIO}>Bio</NavLink>
                         </li>
                         <li>
-                            <Link to={ROUTES.TOP_ALBUMS}>Top Albums</Link>
+                            <NavLink activeStyle={this.activeStyle} to={ROUTES.TOP_ALBUMS}>Top Albums</NavLink>
                         </li>
                         <li>
-                            <Link to={ROUTES.TOP_TRACKS}>Top tracks</Link>
+                            <NavLink activeStyle={this.activeStyle} to={ROUTES.TOP_TRACKS}>Top tracks</NavLink>
                         </li>
                         <li>
-                            <Link to={ROUTES.MUSIC_GENRES}>Musical genres</Link>
+                            <NavLink activeStyle={this.activeStyle} to={ROUTES.MUSIC_GENRES}>Musical genres</NavLink>
                         </li>
                         <li>
-                            <Link to={ROUTES.RELATED_ARTISTS}>Related Artists</Link>
+                            <NavLink activeStyle={this.activeStyle} to={ROUTES.RELATED_ARTISTS}>Related Artists</NavLink>
                         </li>
                     </ul>
                 </div>

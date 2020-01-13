@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 /* Import ArtistContext Consumer */
 import { Consumer } from '../../context/context';
@@ -18,6 +18,7 @@ import MusicalGenres from '../MusicalGenres/MusicalGenres';
 import RelatedArtist from '../RelatedArtist/RelatedArtist';
 import TopAlbums from '../TopAlbums/TopAlbums';
 import TopTracks from '../TopTracks/TopTracks';
+import NotFound from '../NotFound/NotFound';
 
 const App = () => {
     return (
@@ -26,12 +27,15 @@ const App = () => {
             <Router>
                 <Navigation />
                 <ArtistName />
-                <Route exact path={ROUTES.HOME} component={Home} />
-                <Route exact path={ROUTES.BIO} component={Bio} />
-                <Route exact path={ROUTES.MUSIC_GENRES} component={MusicalGenres} />
-                <Route exact path={ROUTES.RELATED_ARTISTS} component={RelatedArtist} />
-                <Route exact path={ROUTES.TOP_ALBUMS} component={TopAlbums}/> 
-                <Route exact path={ROUTES.TOP_TRACKS} component={TopTracks} />
+                <Switch>
+                    <Route exact path={ROUTES.HOME} component={Home} />
+                    <Route exact path={ROUTES.BIO} component={Bio} />
+                    <Route exact path={ROUTES.MUSIC_GENRES} component={MusicalGenres} />
+                    <Route exact path={ROUTES.RELATED_ARTISTS} component={RelatedArtist} />
+                    <Route exact path={ROUTES.TOP_ALBUMS} component={TopAlbums}/> 
+                    <Route exact path={ROUTES.TOP_TRACKS} component={TopTracks} />
+                    <Route component={NotFound} />
+                </Switch>
             </Router>
         </div>
     );
