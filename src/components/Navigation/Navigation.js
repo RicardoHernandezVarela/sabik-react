@@ -30,10 +30,8 @@ class Navigation extends Component {
         let actualPath = this.actualPath;
     
         if (actualPath !== newPath) {
-            //console.log('actual: ', actualPath, 'new: ', newPath);
             if (window.outerWidth < 768) {
                 this.setState({navClass: "nav-hide"});
-                console.log(window.outerWidth);
             }
         }
 
@@ -65,7 +63,7 @@ class Navigation extends Component {
                             <Link to={ROUTES.MUSIC_GENRES}>Musical genres</Link>
                         </li>
                         <li>
-                            <Link to={ROUTES.RELEATED_ARTISTS}>Releated Artists</Link>
+                            <Link to={ROUTES.RELATED_ARTISTS}>Related Artists</Link>
                         </li>
                     </ul>
                 </div>

@@ -4,12 +4,9 @@ import React from 'react';
 import { Consumer } from '../../context/context';
 
 /* Import CSS */
-import './MusicGenres.css'
+import './MusicalGenres.css'
 
-/* Imagen para los tracks */
-//import Genres from '../../img/genres.png';
-
-const MusicGenres = () => {
+const MusicalGenres = () => {
     return (
         <Consumer>
             {context => {
@@ -55,4 +52,4 @@ const TagList = (props) => {
     );
 }
 
-export default MusicGenres;
+export default MusicalGenres;

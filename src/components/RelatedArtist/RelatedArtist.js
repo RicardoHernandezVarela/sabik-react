@@ -34,7 +34,7 @@ const ArtistList = (props) => {
     const allArtist = props.artist.similar.artist;
     if (allArtist.length > 0) {
         return (
-            <ul>
+            <ul className="similar">
                 {allArtist.map((artist, index) => {
                     return (
                         <Artist key={index} artist={artist} handleRedirectArtist={props.handleRedirectArtist}/>
@@ -57,7 +57,7 @@ class ArtistBase extends Component {
     render() {
         return (
             <li onClick={this.handleClickArtist}>
-                <img className="singer-logo" src={Singing} alt="Singer"/>
+                <img className="similar-logo" src={Singing} alt="Singer"/>
                 <span>{this.props.artist.name}</span>
             </li>
         );

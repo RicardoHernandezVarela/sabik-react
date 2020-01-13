@@ -35,7 +35,9 @@ class Bio extends Component {
                     if (artist) {
 
                         if (fullText) {
-                            text = artist.bio.content.replace(/<[^>]+>/g, '');
+                            text = artist.bio.content
+                                .replace(/<[^>]+>/g, '')
+                                .replace('Read more on Last.fm', '')
                         } else {
                             text = artist.bio.content.replace(/<[^>]+>/g, '').slice(0, 500);
                         }

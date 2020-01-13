@@ -10,11 +10,19 @@ import { Consumer } from '../../context/context';
 import Loader from '../Loader/Loader';
 
 const Home = () => {
+
     return (
         <Consumer>
           { context => {
             const { search, loading, artist, artistImg, actions, error} = context;
-            
+            let text = ''
+;
+            if (artist) {
+                text = artist.bio.summary
+                    .replace(/<[^>]+>/g, '')
+                    .replace('Read more on Last.fm', '')
+            }
+
             return (
                 <div>
                     <SearchForm 
@@ -27,7 +35,7 @@ const Home = () => {
                     {artist && 
                         <div className="summary">
                             <img className="artist-img" src={artistImg} alt="Artist img"/>
-                            <p className="bio-summary">{(artist.bio.summary.replace(/<[^>]+>/g, ''))}</p>
+                            <p className="bio-summary">{text}</p>
                         </div>
                     }
 
